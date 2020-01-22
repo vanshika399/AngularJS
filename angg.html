@@ -1,0 +1,32 @@
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>  
+<body>
+<form ng-app="myApp" ng-controller="validateCtrl" 
+name="myForm" novalidate>
+<p>Email:<br>
+<input type="email" name="email" ng-model="email" required>
+<span ng-show="myForm.email.$dirty && myForm.email.$invalid">
+<span ng-show="myForm.email.$error.required">required!</span>
+<span ng-show="myForm.email.$error.email">Invalid email.</span>
+</span>
+</p>
+<p>Password:
+<input name="p1" ng-model="p1" required ng-minlength="5" ng-maxlength="10">
+<span ng-show="myForm.p1.$dirty && myForm.p1.$invalid">
+<span ng-show="myForm.p1.$error.required">required!</span>
+<span ng-show="myForm.p1.$error.minlength">too short</span>
+<span ng-show="myForm.p1.$error.maxlength">too long</span>
+
+</p>
+
+</form>
+
+<script>
+var app = angular.module('myApp', []);
+app.controller('validateCtrl', function($scope) {
+    $scope.email = '';
+});
+</script>
+</body>
+
+</html>
